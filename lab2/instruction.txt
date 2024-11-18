@@ -1,0 +1,1288 @@
+Last login: Fri Oct 11 09:55:05 on ttys044
+lilianahotsko@Lilianas-MacBook-Air ~ % ssh liliana.hotsko@ut.ee
+^C
+lilianahotsko@Lilianas-MacBook-Air ~ % ssh liliana.hotsko@rocket.hpc.ut.ee
+The authenticity of host 'rocket.hpc.ut.ee (193.40.44.65)' can't be established.
+ED25519 key fingerprint is SHA256:bB2QxTdOP1QI8zJ6js/myrWu7Igm5DYv8qWOMeoFVxE.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? y
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added 'rocket.hpc.ut.ee' (ED25519) to the list of known hosts.
+Connection closed by 193.40.44.65 port 22
+lilianahotsko@Lilianas-MacBook-Air ~ % ssh hotsko@rocket.hpc.ut.ee
+hotsko@rocket.hpc.ut.ee's password: 
+                   *     .--.
+                        / /  `
+       +               | |
+              '         \ \__,
+          *          +   '--'  *
+              +   /\                 
+ +              .'  '.   *           
+        *      /======\      +       
+              ;:.  _   ;             
+              |:. (_)  |             
+              |:.  _   |             
+    +         |:. (_)  |          *  
+              ;:.      ;             
+            .' \:.    / `.           
+           / .-'':._.'`-. \          
+           |/    /||\    \|          
+         _..--"""````"""--.._        
+   _.-'``                    ``'-._  
+ -'                                '-
+                    | |      | |     
+      _ __ ___   ___| | _____| |_    
+     | '__/ _ \ / __| |/ / _ \ __/   
+     | | | (_) | (__|   <  __/ |_    
+     |_|  \___/ \___|_|\_\___|\__|   
+                                     
+----------------------------------------------------------------------------------------------------
+
+Welcome to the UTHPC Rocket cluster! Running SLURM 22.05.11
+This is a login node, running computations directly on this node outside of SLURM jobs is prohibited!
+
+----------------------------------------------------------------------------------------------------
+
+Rocket is being upgraded! 
+Currently, about half of the cluster's nodes have been upgraded to a new operating system. The
+rest are drained or down in preparation for the same upgrade.
+
+Due to this, you may experience malfunctions in software modules.
+Please contact support@hpc.ut.ee if that is the case.
+
+For additional info, see https://docs.hpc.ut.ee/public/HPC_update_summer24/
+
+------
+
+By using the Cluster environment you agree with the Cluster terms of use:
+https://docs.hpc.ut.ee/public/cluster/terms-of-use/ 
+(version 1.0; valid from January 25, 2024).
+
+----------------------------------------------------------------------------------------------------
+
+Get started with your first job - https://docs.hpc.ut.ee/public/cluster/First_steps/quickstart/
+Contact us at support@hpc.ut.ee or fill out a form at https://hpc.ut.ee/getting-started/access/
+[hotsko@login1 ~]$ mkdir transformers-course
+[hotsko@login1 ~]$ cd transformers-course
+[hotsko@login1 transformers-course]$ mkdir data
+mkdir scripts
+[hotsko@login1 transformers-course]$ ls
+data  scripts
+[hotsko@login1 transformers-course]$ module load any/python/3.8.3-conda
+[hotsko@login1 transformers-course]$ conda create -n transformers-course python=3.9
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /gpfs/helios/home/hotsko/.conda/envs/transformers-course
+
+  added / updated specs:
+    - python=3.9
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2024.9.24  |       h06a4308_0         130 KB
+    ld_impl_linux-64-2.40      |       h12ee557_0         710 KB
+    libffi-3.4.4               |       h6a678d5_1         141 KB
+    openssl-3.0.15             |       h5eee18b_0         5.2 MB
+    pip-24.2                   |   py39h06a4308_0         2.2 MB
+    python-3.9.20              |       he870216_1        25.1 MB
+    setuptools-75.1.0          |   py39h06a4308_0         1.7 MB
+    sqlite-3.45.3              |       h5eee18b_0         1.2 MB
+    tk-8.6.14                  |       h39e8969_0         3.4 MB
+    tzdata-2024b               |       h04d1e81_0         115 KB
+    wheel-0.44.0               |   py39h06a4308_0         108 KB
+    xz-5.4.6                   |       h5eee18b_1         643 KB
+    zlib-1.2.13                |       h5eee18b_1         111 KB
+    ------------------------------------------------------------
+                                           Total:        40.8 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu 
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2024.9.24-h06a4308_0 
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.40-h12ee557_0 
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_1 
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1 
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1 
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1 
+  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0 
+  openssl            pkgs/main/linux-64::openssl-3.0.15-h5eee18b_0 
+  pip                pkgs/main/linux-64::pip-24.2-py39h06a4308_0 
+  python             pkgs/main/linux-64::python-3.9.20-he870216_1 
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0 
+  setuptools         pkgs/main/linux-64::setuptools-75.1.0-py39h06a4308_0 
+  sqlite             pkgs/main/linux-64::sqlite-3.45.3-h5eee18b_0 
+  tk                 pkgs/main/linux-64::tk-8.6.14-h39e8969_0 
+  tzdata             pkgs/main/noarch::tzdata-2024b-h04d1e81_0 
+  wheel              pkgs/main/linux-64::wheel-0.44.0-py39h06a4308_0 
+  xz                 pkgs/main/linux-64::xz-5.4.6-h5eee18b_1 
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_1 
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages:
+                                                                 
+Preparing transaction: done                                      
+Verifying transaction: done                                      
+Executing transaction: done                                      
+#                                                                
+# To activate this environment, use                              
+#                                                                
+#     $ conda activate transformers-course                       
+#                                                                
+# To deactivate an active environment, use                       
+#                                                                
+#     $ conda deactivate                                         
+                                                                 
+[hotsko@login1 transformers-course]$ conda install -n transformers-course pip
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+[hotsko@login1 transformers-course]$ conda activate transformers-course
+(transformers-course) [hotsko@login1 transformers-course]$ module load broadwell/gcc/9.2.0
+(transformers-course) [hotsko@login1 transformers-course]$ git clone https://github.com/pytorch/fairseq
+Cloning into 'fairseq'...
+remote: Enumerating objects: 35385, done.
+remote: Counting objects: 100% (48/48), done.
+remote: Compressing objects: 100% (36/36), done.
+remote: Total 35385 (delta 10), reused 40 (delta 9), pack-reused 35337 (from 1)
+Receiving objects: 100% (35385/35385), 25.47 MiB | 22.98 MiB/s, done.
+Resolving deltas: 100% (25539/25539), done.
+(transformers-course) [hotsko@login1 transformers-course]$ cd fairseq
+(transformers-course) [hotsko@login1 fairseq]$ pip install --editable ./
+Obtaining file:///gpfs/helios/home/hotsko/transformers-course/fairseq
+  Installing build dependencies ... done
+  Checking if build backend supports build_editable ... done
+  Getting requirements to build editable ... done
+  Preparing editable metadata (pyproject.toml) ... done
+Collecting cffi (from fairseq==0.12.2)
+  Downloading cffi-1.17.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting cython (from fairseq==0.12.2)
+  Using cached Cython-3.0.11-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.2 kB)
+Collecting hydra-core<1.1,>=1.0.7 (from fairseq==0.12.2)
+  Downloading hydra_core-1.0.7-py3-none-any.whl.metadata (3.7 kB)
+Collecting omegaconf<2.1 (from fairseq==0.12.2)
+  Downloading omegaconf-2.0.6-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.6 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/d0/eb/9d63ce09dd8aa85767c65668d5414958ea29648a0eec80a4a7d311ec2684/omegaconf-2.0.6-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Downloading omegaconf-2.0.5-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.5 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/e5/f6/043b6d255dd6fbf2025110cea35b87f4c5100a181681d8eab496269f0d5b/omegaconf-2.0.5-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Downloading omegaconf-2.0.4-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.4 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/92/b1/4f3023143436f12c98bab53f0b3db617bd18a7d223627d5030e13a7b4fc2/omegaconf-2.0.4-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Downloading omegaconf-2.0.3-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.3 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/29/08/a88210c2c1aa0a3f65f05d8a6c98939ccb84b6fb982aa6567dec4e6773f9/omegaconf-2.0.3-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Downloading omegaconf-2.0.2-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.2 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/72/fe/f8d162aa059fb4f327fd75144dd69aa7e8acbb6d8d37013e4638c8490e0b/omegaconf-2.0.2-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Downloading omegaconf-2.0.1-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.1 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/86/ec/605805e60abdb025b06664d107335031bb8ebdc52e0a90bdbad6a7130279/omegaconf-2.0.1-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Downloading omegaconf-2.0.0-py3-none-any.whl.metadata (3.5 kB)
+Collecting numpy>=1.21.3 (from fairseq==0.12.2)
+  Using cached numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting regex (from fairseq==0.12.2)
+  Downloading regex-2024.11.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (40 kB)
+Collecting sacrebleu>=1.4.12 (from fairseq==0.12.2)
+  Downloading sacrebleu-2.4.3-py3-none-any.whl.metadata (51 kB)
+Collecting torch>=1.13 (from fairseq==0.12.2)
+  Using cached torch-2.5.1-cp39-cp39-manylinux1_x86_64.whl.metadata (28 kB)
+Collecting tqdm (from fairseq==0.12.2)
+  Downloading tqdm-4.67.0-py3-none-any.whl.metadata (57 kB)
+Collecting bitarray (from fairseq==0.12.2)
+  Downloading bitarray-3.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (32 kB)
+Collecting torchaudio>=0.8.0 (from fairseq==0.12.2)
+  Downloading torchaudio-2.5.1-cp39-cp39-manylinux1_x86_64.whl.metadata (6.4 kB)
+Collecting scikit-learn (from fairseq==0.12.2)
+  Downloading scikit_learn-1.5.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting packaging (from fairseq==0.12.2)
+  Downloading packaging-24.1-py3-none-any.whl.metadata (3.2 kB)
+Collecting omegaconf<2.1 (from fairseq==0.12.2)
+  Using cached omegaconf-2.0.6-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.6 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/d0/eb/9d63ce09dd8aa85767c65668d5414958ea29648a0eec80a4a7d311ec2684/omegaconf-2.0.6-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Using cached omegaconf-2.0.5-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.5 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/e5/f6/043b6d255dd6fbf2025110cea35b87f4c5100a181681d8eab496269f0d5b/omegaconf-2.0.5-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+INFO: pip is looking at multiple versions of hydra-core to determine which version is compatible with other requirements. This could take a while.
+ERROR: Cannot install fairseq and fairseq==0.12.2 because these package versions have conflicting dependencies.
+
+The conflict is caused by:
+    fairseq 0.12.2 depends on omegaconf<2.1
+    hydra-core 1.0.7 depends on omegaconf<2.1 and >=2.0.5
+
+To fix this you could try to:
+1. loosen the range of package versions you've specified
+2. remove package versions to allow pip to attempt to solve the dependency conflict
+
+ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+(transformers-course) [hotsko@login1 fairseq]$ conda deactivate
+[hotsko@login1 fairseq]$ conda install -n transformers-course pip=24
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+[hotsko@login1 fairseq]$ conda activate transformers-course
+(transformers-course) [hotsko@login1 fairseq]$ module load broadwell/gcc/9.2.0
+(transformers-course) [hotsko@login1 fairseq]$ cd fairsec
+-bash: cd: fairsec: No such file or directory
+(transformers-course) [hotsko@login1 fairseq]$ pip install --editable ./
+Obtaining file:///gpfs/helios/home/hotsko/transformers-course/fairseq
+  Installing build dependencies ... done
+  Checking if build backend supports build_editable ... done
+  Getting requirements to build editable ... done
+  Preparing editable metadata (pyproject.toml) ... done
+Collecting cffi (from fairseq==0.12.2)
+  Using cached cffi-1.17.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting cython (from fairseq==0.12.2)
+  Using cached Cython-3.0.11-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.2 kB)
+Collecting hydra-core<1.1,>=1.0.7 (from fairseq==0.12.2)
+  Using cached hydra_core-1.0.7-py3-none-any.whl.metadata (3.7 kB)
+Collecting omegaconf<2.1 (from fairseq==0.12.2)
+  Using cached omegaconf-2.0.6-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.6 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/d0/eb/9d63ce09dd8aa85767c65668d5414958ea29648a0eec80a4a7d311ec2684/omegaconf-2.0.6-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Using cached omegaconf-2.0.5-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.5 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/e5/f6/043b6d255dd6fbf2025110cea35b87f4c5100a181681d8eab496269f0d5b/omegaconf-2.0.5-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Using cached omegaconf-2.0.4-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.4 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/92/b1/4f3023143436f12c98bab53f0b3db617bd18a7d223627d5030e13a7b4fc2/omegaconf-2.0.4-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Using cached omegaconf-2.0.3-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.3 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/29/08/a88210c2c1aa0a3f65f05d8a6c98939ccb84b6fb982aa6567dec4e6773f9/omegaconf-2.0.3-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Using cached omegaconf-2.0.2-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.2 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/72/fe/f8d162aa059fb4f327fd75144dd69aa7e8acbb6d8d37013e4638c8490e0b/omegaconf-2.0.2-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Using cached omegaconf-2.0.1-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.1 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/86/ec/605805e60abdb025b06664d107335031bb8ebdc52e0a90bdbad6a7130279/omegaconf-2.0.1-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Using cached omegaconf-2.0.0-py3-none-any.whl.metadata (3.5 kB)
+Collecting numpy>=1.21.3 (from fairseq==0.12.2)
+  Using cached numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting regex (from fairseq==0.12.2)
+  Using cached regex-2024.11.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (40 kB)
+Collecting sacrebleu>=1.4.12 (from fairseq==0.12.2)
+  Using cached sacrebleu-2.4.3-py3-none-any.whl.metadata (51 kB)
+Collecting torch>=1.13 (from fairseq==0.12.2)
+  Using cached torch-2.5.1-cp39-cp39-manylinux1_x86_64.whl.metadata (28 kB)
+Collecting tqdm (from fairseq==0.12.2)
+  Using cached tqdm-4.67.0-py3-none-any.whl.metadata (57 kB)
+Collecting bitarray (from fairseq==0.12.2)
+  Using cached bitarray-3.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (32 kB)
+Collecting torchaudio>=0.8.0 (from fairseq==0.12.2)
+  Using cached torchaudio-2.5.1-cp39-cp39-manylinux1_x86_64.whl.metadata (6.4 kB)
+Collecting scikit-learn (from fairseq==0.12.2)
+  Using cached scikit_learn-1.5.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting packaging (from fairseq==0.12.2)
+  Using cached packaging-24.1-py3-none-any.whl.metadata (3.2 kB)
+Collecting omegaconf<2.1 (from fairseq==0.12.2)
+  Using cached omegaconf-2.0.6-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.6 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/d0/eb/9d63ce09dd8aa85767c65668d5414958ea29648a0eec80a4a7d311ec2684/omegaconf-2.0.6-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+  Using cached omegaconf-2.0.5-py3-none-any.whl.metadata (3.0 kB)
+WARNING: Ignoring version 2.0.5 of omegaconf since it has invalid metadata:
+Requested omegaconf<2.1 from https://files.pythonhosted.org/packages/e5/f6/043b6d255dd6fbf2025110cea35b87f4c5100a181681d8eab496269f0d5b/omegaconf-2.0.5-py3-none-any.whl (from fairseq==0.12.2) has invalid metadata: .* suffix can only be used with `==` or `!=` operators
+    PyYAML (>=5.1.*)
+            ~~~~~~^
+Please use pip<24.1 if you need to use this version.
+INFO: pip is looking at multiple versions of hydra-core to determine which version is compatible with other requirements. This could take a while.
+ERROR: Cannot install fairseq and fairseq==0.12.2 because these package versions have conflicting dependencies.
+
+The conflict is caused by:
+    fairseq 0.12.2 depends on omegaconf<2.1
+    hydra-core 1.0.7 depends on omegaconf<2.1 and >=2.0.5
+
+To fix this you could try to:
+1. loosen the range of package versions you've specified
+2. remove package versions to allow pip to attempt to solve the dependency conflict
+
+ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+(transformers-course) [hotsko@login1 fairseq]$ pip install pip==24
+Collecting pip==24
+  Downloading pip-24.0-py3-none-any.whl.metadata (3.6 kB)
+Downloading pip-24.0-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 27.3 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 24.2
+    Uninstalling pip-24.2:
+      Successfully uninstalled pip-24.2
+Successfully installed pip-24.0
+(transformers-course) [hotsko@login1 fairseq]$ pip -v
+
+Usage:   
+  pip <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  inspect                     Inspect the python environment.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  cache                       Inspect and manage pip's wheel cache.
+  index                       Inspect information available from package indexes.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  debug                       Show information useful for debugging.
+  help                        Show help for commands.
+
+General Options:
+  -h, --help                  Show help.
+  --debug                     Let unhandled exceptions
+                              propagate outside the main
+                              subroutine, instead of logging
+                              them to stderr.
+  --isolated                  Run pip in an isolated mode,
+                              ignoring environment variables
+                              and user configuration.
+  --require-virtualenv        Allow pip to only run in a
+                              virtual environment; exit with an
+                              error otherwise.
+  --python <python>           Run pip with the specified Python
+                              interpreter.
+  -v, --verbose               Give more output. Option is
+                              additive, and can be used up to 3
+                              times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output. Option is
+                              additive, and can be used up to 3
+                              times (corresponding to WARNING,
+                              ERROR, and CRITICAL logging
+                              levels).
+  --log <path>                Path to a verbose appending log.
+  --no-input                  Disable prompting for input.
+  --keyring-provider <keyring_provider>
+                              Enable the credential lookup via
+                              the keyring library if user input
+                              is allowed. Specify which
+                              mechanism to use [disabled,
+                              import, subprocess]. (default:
+                              disabled)
+  --proxy <proxy>             Specify a proxy in the form schem
+                              e://[user:passwd@]proxy.server:po
+                              rt.
+  --retries <retries>         Maximum number of retries each
+                              connection should attempt
+                              (default 5 times).
+  --timeout <sec>             Set the socket timeout (default
+                              15 seconds).
+  --exists-action <action>    Default action when a path
+                              already exists: (s)witch,
+                              (i)gnore, (w)ipe, (b)ackup,
+                              (a)bort.
+  --trusted-host <hostname>   Mark this host or host:port pair
+                              as trusted, even though it does
+                              not have valid or any HTTPS.
+  --cert <path>               Path to PEM-encoded CA
+                              certificate bundle. If provided,
+                              overrides the default. See 'SSL
+                              Certificate Verification' in pip
+                              documentation for more
+                              information.
+  --client-cert <path>        Path to SSL client certificate, a
+                              single file containing the
+                              private key and the certificate
+                              in PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to
+                              determine whether a new version
+                              of pip is available for download.
+                              Implied with --no-index.
+  --no-color                  Suppress colored output.
+  --no-python-version-warning
+                              Silence deprecation warnings for
+                              upcoming unsupported Pythons.
+  --use-feature <feature>     Enable new functionality, that
+                              may be backward incompatible.
+  --use-deprecated <feature>  Enable deprecated functionality,
+                              that will be removed in the
+                              future.
+(transformers-course) [hotsko@login1 fairseq]$ pip --version
+pip 24.0 from /gpfs/helios/home/hotsko/.conda/envs/transformers-course/lib/python3.9/site-packages/pip (python 3.9)
+(transformers-course) [hotsko@login1 fairseq]$ pip install --editable ./
+Obtaining file:///gpfs/helios/home/hotsko/transformers-course/fairseq
+  Installing build dependencies ... done
+  Checking if build backend supports build_editable ... done
+  Getting requirements to build editable ... done
+  Preparing editable metadata (pyproject.toml) ... done
+Collecting cffi (from fairseq==0.12.2)
+  Using cached cffi-1.17.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting cython (from fairseq==0.12.2)
+  Using cached Cython-3.0.11-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.2 kB)
+Collecting hydra-core<1.1,>=1.0.7 (from fairseq==0.12.2)
+  Using cached hydra_core-1.0.7-py3-none-any.whl.metadata (3.7 kB)
+Collecting omegaconf<2.1 (from fairseq==0.12.2)
+  Using cached omegaconf-2.0.6-py3-none-any.whl.metadata (3.0 kB)
+Collecting numpy>=1.21.3 (from fairseq==0.12.2)
+  Using cached numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting regex (from fairseq==0.12.2)
+  Using cached regex-2024.11.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (40 kB)
+Collecting sacrebleu>=1.4.12 (from fairseq==0.12.2)
+  Using cached sacrebleu-2.4.3-py3-none-any.whl.metadata (51 kB)
+Collecting torch>=1.13 (from fairseq==0.12.2)
+  Using cached torch-2.5.1-cp39-cp39-manylinux1_x86_64.whl.metadata (28 kB)
+Collecting tqdm (from fairseq==0.12.2)
+  Using cached tqdm-4.67.0-py3-none-any.whl.metadata (57 kB)
+Collecting bitarray (from fairseq==0.12.2)
+  Using cached bitarray-3.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (32 kB)
+Collecting torchaudio>=0.8.0 (from fairseq==0.12.2)
+  Using cached torchaudio-2.5.1-cp39-cp39-manylinux1_x86_64.whl.metadata (6.4 kB)
+Collecting scikit-learn (from fairseq==0.12.2)
+  Using cached scikit_learn-1.5.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting packaging (from fairseq==0.12.2)
+  Using cached packaging-24.1-py3-none-any.whl.metadata (3.2 kB)
+Collecting antlr4-python3-runtime==4.8 (from hydra-core<1.1,>=1.0.7->fairseq==0.12.2)
+  Downloading antlr4-python3-runtime-4.8.tar.gz (112 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━ 112.4/112.4 kB 2.1 MB/s eta 0:00:00
+  Preparing metadata (setup.py) ... done
+Collecting PyYAML>=5.1.* (from omegaconf<2.1->fairseq==0.12.2)
+  Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting typing-extensions (from omegaconf<2.1->fairseq==0.12.2)
+  Using cached typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting portalocker (from sacrebleu>=1.4.12->fairseq==0.12.2)
+  Downloading portalocker-2.10.1-py3-none-any.whl.metadata (8.5 kB)
+Collecting tabulate>=0.8.9 (from sacrebleu>=1.4.12->fairseq==0.12.2)
+  Downloading tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+Collecting colorama (from sacrebleu>=1.4.12->fairseq==0.12.2)
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting lxml (from sacrebleu>=1.4.12->fairseq==0.12.2)
+  Downloading lxml-5.3.0-cp39-cp39-manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+Collecting filelock (from torch>=1.13->fairseq==0.12.2)
+  Using cached filelock-3.16.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting networkx (from torch>=1.13->fairseq==0.12.2)
+  Using cached networkx-3.2.1-py3-none-any.whl.metadata (5.2 kB)
+Collecting jinja2 (from torch>=1.13->fairseq==0.12.2)
+  Using cached jinja2-3.1.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting fsspec (from torch>=1.13->fairseq==0.12.2)
+  Using cached fsspec-2024.10.0-py3-none-any.whl.metadata (11 kB)
+Collecting nvidia-cuda-nvrtc-cu12==12.4.127 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-runtime-cu12==12.4.127 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-cupti-cu12==12.4.127 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cudnn-cu12==9.1.0.70 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cublas-cu12==12.4.5.8 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cufft-cu12==11.2.1.3 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-curand-cu12==10.3.5.147 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cusolver-cu12==11.6.1.9 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparse-cu12==12.3.1.170 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-nccl-cu12==2.21.5 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvtx-cu12==12.4.127 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-nvjitlink-cu12==12.4.127 (from torch>=1.13->fairseq==0.12.2)
+  Using cached nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting triton==3.1.0 (from torch>=1.13->fairseq==0.12.2)
+  Using cached triton-3.1.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.3 kB)
+Collecting sympy==1.13.1 (from torch>=1.13->fairseq==0.12.2)
+  Using cached sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy==1.13.1->torch>=1.13->fairseq==0.12.2)
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting pycparser (from cffi->fairseq==0.12.2)
+  Downloading pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+Collecting scipy>=1.6.0 (from scikit-learn->fairseq==0.12.2)
+  Downloading scipy-1.13.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.6/60.6 kB 3.0 MB/s eta 0:00:00
+Collecting joblib>=1.2.0 (from scikit-learn->fairseq==0.12.2)
+  Downloading joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting threadpoolctl>=3.1.0 (from scikit-learn->fairseq==0.12.2)
+  Downloading threadpoolctl-3.5.0-py3-none-any.whl.metadata (13 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch>=1.13->fairseq==0.12.2)
+  Using cached MarkupSafe-3.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Downloading hydra_core-1.0.7-py3-none-any.whl (123 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━ 123.8/123.8 kB 10.6 MB/s eta 0:00:00
+Using cached numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.5 MB)
+Downloading omegaconf-2.0.6-py3-none-any.whl (36 kB)
+Downloading sacrebleu-2.4.3-py3-none-any.whl (103 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━ 104.0/104.0 kB 15.8 MB/s eta 0:00:00
+Using cached torch-2.5.1-cp39-cp39-manylinux1_x86_64.whl (906.5 MB)
+Using cached nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl (363.4 MB)
+Using cached nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (13.8 MB)
+Using cached nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (24.6 MB)
+Using cached nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (883 kB)
+Using cached nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
+Using cached nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl (211.5 MB)
+Using cached nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl (56.3 MB)
+Using cached nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl (127.9 MB)
+Using cached nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl (207.5 MB)
+Using cached nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl (188.7 MB)
+Using cached nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (21.1 MB)
+Using cached nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (99 kB)
+Using cached sympy-1.13.1-py3-none-any.whl (6.2 MB)
+Using cached triton-3.1.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (209.5 MB)
+Downloading torchaudio-2.5.1-cp39-cp39-manylinux1_x86_64.whl (3.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 40.5 MB/s eta 0:00:00
+Downloading bitarray-3.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (276 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━ 276.1/276.1 kB 27.9 MB/s eta 0:00:00
+Downloading cffi-1.17.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (445 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━ 445.2/445.2 kB 44.9 MB/s eta 0:00:00
+Using cached Cython-3.0.11-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.6 MB)
+Downloading packaging-24.1-py3-none-any.whl (53 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.0/54.0 kB 6.7 MB/s eta 0:00:00
+Downloading regex-2024.11.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (780 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━ 780.9/780.9 kB 59.6 MB/s eta 0:00:00
+Downloading scikit_learn-1.5.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.4/13.4 MB 133.7 MB/s eta 0:00:00
+Downloading tqdm-4.67.0-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.6/78.6 kB 14.6 MB/s eta 0:00:00
+Downloading joblib-1.4.2-py3-none-any.whl (301 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━ 301.8/301.8 kB 33.8 MB/s eta 0:00:00
+Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (737 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━ 737.4/737.4 kB 65.4 MB/s eta 0:00:00
+Downloading scipy-1.13.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (38.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━ 38.6/38.6 MB 127.9 MB/s eta 0:00:00
+Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+Downloading threadpoolctl-3.5.0-py3-none-any.whl (18 kB)
+Using cached typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Using cached filelock-3.16.1-py3-none-any.whl (16 kB)
+Using cached fsspec-2024.10.0-py3-none-any.whl (179 kB)
+Using cached jinja2-3.1.4-py3-none-any.whl (133 kB)
+Downloading lxml-5.3.0-cp39-cp39-manylinux_2_28_x86_64.whl (5.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.0/5.0 MB 113.9 MB/s eta 0:00:00
+Using cached networkx-3.2.1-py3-none-any.whl (1.6 MB)
+Downloading portalocker-2.10.1-py3-none-any.whl (18 kB)
+Downloading pycparser-2.22-py3-none-any.whl (117 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 18.0 MB/s eta 0:00:00
+Using cached MarkupSafe-3.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20 kB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Building wheels for collected packages: fairseq, antlr4-python3-runtime
+  Building editable for fairseq (pyproject.toml) ... done
+  Created wheel for fairseq: filename=fairseq-0.12.2-0.editable-cp39-cp39-linux_x86_64.whl size=9580 sha256=49eae47fce6bfeca97e2a05ec01f181d75438dfc5c50b00da43959b6501c2d4a
+  Stored in directory: /tmp/pip-ephem-wheel-cache-6kt97wl2/wheels/55/60/6f/29024e18cea7c76f9ecaa272d78aca2b64017b5968e3e159b0
+  Building wheel for antlr4-python3-runtime (setup.py) ... done
+  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.8-py3-none-any.whl size=141214 sha256=e30b6c1b135ac4c633810e983d5a128317ad9242bccc308b52e2e59013f03109
+  Stored in directory: /gpfs/helios/home/hotsko/.cache/pip/wheels/42/3c/ae/14db087e6018de74810afe32eb6ac890ef9c68ba19b00db97a
+Successfully built fairseq antlr4-python3-runtime
+DEPRECATION: omegaconf 2.0.6 has a non-standard dependency specifier PyYAML>=5.1.*. pip 24.1 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of omegaconf or contact the author to suggest that they release a version with a conforming dependency specifiers. Discussion can be found at https://github.com/pypa/pip/issues/12063
+Installing collected packages: mpmath, bitarray, antlr4-python3-runtime, typing-extensions, tqdm, threadpoolctl, tabulate, sympy, regex, PyYAML, pycparser, portalocker, packaging, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, MarkupSafe, lxml, joblib, fsspec, filelock, cython, colorama, triton, scipy, sacrebleu, omegaconf, nvidia-cusparse-cu12, nvidia-cudnn-cu12, jinja2, cffi, scikit-learn, nvidia-cusolver-cu12, hydra-core, torch, torchaudio, fairseq
+Successfully installed MarkupSafe-3.0.2 PyYAML-6.0.2 antlr4-python3-runtime-4.8 bitarray-3.0.0 cffi-1.17.1 colorama-0.4.6 cython-3.0.11 fairseq-0.12.2 filelock-3.16.1 fsspec-2024.10.0 hydra-core-1.0.7 jinja2-3.1.4 joblib-1.4.2 lxml-5.3.0 mpmath-1.3.0 networkx-3.2.1 numpy-2.0.2 nvidia-cublas-cu12-12.4.5.8 nvidia-cuda-cupti-cu12-12.4.127 nvidia-cuda-nvrtc-cu12-12.4.127 nvidia-cuda-runtime-cu12-12.4.127 nvidia-cudnn-cu12-9.1.0.70 nvidia-cufft-cu12-11.2.1.3 nvidia-curand-cu12-10.3.5.147 nvidia-cusolver-cu12-11.6.1.9 nvidia-cusparse-cu12-12.3.1.170 nvidia-nccl-cu12-2.21.5 nvidia-nvjitlink-cu12-12.4.127 nvidia-nvtx-cu12-12.4.127 omegaconf-2.0.6 packaging-24.1 portalocker-2.10.1 pycparser-2.22 regex-2024.11.6 sacrebleu-2.4.3 scikit-learn-1.5.2 scipy-1.13.1 sympy-1.13.1 tabulate-0.9.0 threadpoolctl-3.5.0 torch-2.5.1 torchaudio-2.5.1 tqdm-4.67.0 triton-3.1.0 typing-extensions-4.12.2
+
+[notice] A new release of pip is available: 24.0 -> 24.3.1
+[notice] To update, run: pip install --upgrade pip
+(transformers-course) [hotsko@login1 fairseq]$ pip install tensorboardX
+Collecting tensorboardX
+  Downloading tensorboardX-2.6.2.2-py2.py3-none-any.whl.metadata (5.8 kB)
+Requirement already satisfied: numpy in /gpfs/helios/home/hotsko/.conda/envs/transformers-course/lib/python3.9/site-packages (from tensorboardX) (2.0.2)
+Requirement already satisfied: packaging in /gpfs/helios/home/hotsko/.conda/envs/transformers-course/lib/python3.9/site-packages (from tensorboardX) (24.1)
+Collecting protobuf>=3.20 (from tensorboardX)
+  Downloading protobuf-5.28.3-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+Downloading tensorboardX-2.6.2.2-py2.py3-none-any.whl (101 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.7/101.7 kB 1.9 MB/s eta 0:00:00
+Downloading protobuf-5.28.3-cp38-abi3-manylinux2014_x86_64.whl (316 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━ 316.6/316.6 kB 7.7 MB/s eta 0:00:00
+DEPRECATION: omegaconf 2.0.6 has a non-standard dependency specifier PyYAML>=5.1.*. pip 24.1 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of omegaconf or contact the author to suggest that they release a version with a conforming dependency specifiers. Discussion can be found at https://github.com/pypa/pip/issues/12063
+Installing collected packages: protobuf, tensorboardX
+Successfully installed protobuf-5.28.3 tensorboardX-2.6.2.2
+
+[notice] A new release of pip is available: 24.0 -> 24.3.1
+[notice] To update, run: pip install --upgrade pip
+(transformers-course) [hotsko@login1 fairseq]$ touch scripts/train.sh
+(transformers-course) [hotsko@login1 fairseq]$ nano scripts/train.sh
+(transformers-course) [hotsko@login1 fairseq]$ nano scripts/train.sh
+(transformers-course) [hotsko@login1 fairseq]$ sbatch scripts/train.sh
+Submitted batch job 52572029
+(transformers-course) [hotsko@login1 fairseq]$ squeue |
+> ls
+CODE_OF_CONDUCT.md                                          fairseq_cli
+CONTRIBUTING.md                                             hubconf.py
+LICENSE                                                     hydra_plugins
+MANIFEST.in                                                 pyproject.toml
+README.md                                                   release_utils.py
+RELEASE.md                                                  scripts
+alignment_train_cpu_binding.cpython-39-x86_64-linux-gnu.so  setup.cfg
+docs                                                        setup.py
+examples                                                    tests
+fairseq                                                     train.py
+fairseq.egg-info
+(transformers-course) [hotsko@login1 fairseq]$ squeue | less
+(transformers-course) [hotsko@login1 fairseq]$ squeue |
+> less
+(transformers-course) [hotsko@login1 fairseq]$ ls
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+MANIFEST.in
+README.md
+RELEASE.md
+alignment_train_cpu_binding.cpython-39-x86_64-linux-gnu.so
+docs
+examples
+fairseq
+fairseq.egg-info
+fairseq_cli
+hubconf.py
+hydra_plugins
+pyproject.toml
+release_utils.py
+scripts
+setup.cfg
+setup.py
+slurm-test_job.52572029.out
+tests
+train.py
+(transformers-course) [hotsko@login1 fairseq]$ cp n /gpfs/space/projects/transformers2023/data/sequence-copy-testing data
+cp: target 'data' is not a directory
+(transformers-course) [hotsko@login1 fairseq]$ cd ..
+(transformers-course) [hotsko@login1 transformers-course]$ cp /gpfs/space/projects/transformers2023/data/sequence-copy-testing data
+cp: -r not specified; omitting directory '/gpfs/space/projects/transformers2023/data/sequence-copy-testing'
+(transformers-course) [hotsko@login1 transformers-course]$ cp -r /gpfs/space/projects/transformers2023/data/sequence-copy-testing data
+(transformers-course) [hotsko@login1 transformers-course]$ ls data
+sequence-copy-testing
+(transformers-course) [hotsko@login1 transformers-course]$ ls data/sequence-copy-testing/
+train.src  train.tgt  valid.src  valid.tgt
+(transformers-course) [hotsko@login1 transformers-course]$ ls data/sequence-copy-testing/
+train.src  train.tgt  valid.src  valid.tgt  
+(transformers-course) [hotsko@login1 transformers-course]$ ls data/sequence-copy-testing/train.src
+data/sequence-copy-testing/train.src
+(transformers-course) [hotsko@login1 transformers-course]$ ls data/sequence-copy-testing/train.src | less
+(transformers-course) [hotsko@login1 transformers-course]$ cat data/sequence-copy-testing/train.src | less
+(transformers-course) [hotsko@login1 transformers-course]$ cat fairseq/scripts/train.sh | less
+(transformers-course) [hotsko@login1 transformers-course]$ mv fairseq/sripts/train.sh scripts
+mv: cannot stat 'fairseq/sripts/train.sh': No such file or directory
+(transformers-course) [hotsko@login1 transformers-course]$ ls scripts
+(transformers-course) [hotsko@login1 transformers-course]$ ls fairseq/scripts
+__init__.py             convert_dictionary.lua  split_train_valid_docs.py
+average_checkpoints.py  convert_model.lua       spm_decode.py
+build_sym_alignment.py  count_docs.py           spm_encode.py
+check_installation.py   read_binarized.py       spm_train.py
+compare_namespaces.py   rm_pt.py                test_fsdp.sh
+compound_split_bleu.sh  sacrebleu.sh            train.sh
+constraints             shard_docs.py
+(transformers-course) [hotsko@login1 transformers-course]$ mv fairseq/sripts/train.sh scripts/
+mv: cannot stat 'fairseq/sripts/train.sh': No such file or directory
+(transformers-course) [hotsko@login1 transformers-course]$ ls fairseq/scripts
+__init__.py             convert_dictionary.lua  split_train_valid_docs.py
+average_checkpoints.py  convert_model.lua       spm_decode.py
+build_sym_alignment.py  count_docs.py           spm_encode.py
+check_installation.py   read_binarized.py       spm_train.py
+compare_namespaces.py   rm_pt.py                test_fsdp.sh
+compound_split_bleu.sh  sacrebleu.sh            train.sh
+constraints             shard_docs.py
+(transformers-course) [hotsko@login1 transformers-course]$ ls scripts
+(transformers-course) [hotsko@login1 transformers-course]$ 
+(transformers-course) [hotsko@login1 transformers-course]$ ls fairseq/scripts
+__init__.py             convert_dictionary.lua  split_train_valid_docs.py
+average_checkpoints.py  convert_model.lua       spm_decode.py
+build_sym_alignment.py  count_docs.py           spm_encode.py
+check_installation.py   read_binarized.py       spm_train.py
+compare_namespaces.py   rm_pt.py                test_fsdp.sh
+compound_split_bleu.sh  sacrebleu.sh            train.sh
+constraints             shard_docs.py
+(transformers-course) [hotsko@login1 transformers-course]$ cat fairseq/scripts/train.sh | less
+(transformers-course) [hotsko@login1 transformers-course]$ nano fairseq/scripts/train.sh 
+(transformers-course) [hotsko@login1 transformers-course]$ nano fairseq/scripts/train.sh 
+(transformers-course) [hotsko@login1 transformers-course]$ nano fairseq/scripts/train.sh 
+(transformers-course) [hotsko@login1 transformers-course]$ sbatch fairseq/scripts/preprocess.sh
+sbatch: error: Unable to open file fairseq/scripts/preprocess.sh
+(transformers-course) [hotsko@login1 transformers-course]$ ls
+data  fairseq  scripts
+(transformers-course) [hotsko@login1 transformers-course]$ ls scripts
+(transformers-course) [hotsko@login1 transformers-course]$ ls fairseq
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+MANIFEST.in
+README.md
+RELEASE.md
+alignment_train_cpu_binding.cpython-39-x86_64-linux-gnu.so
+docs
+examples
+fairseq
+fairseq.egg-info
+fairseq_cli
+hubconf.py
+hydra_plugins
+pyproject.toml
+release_utils.py
+scripts
+setup.cfg
+setup.py
+slurm-test_job.52572029.out
+tests
+train.py
+(transformers-course) [hotsko@login1 transformers-course]$ ls fairseq/scripts
+__init__.py             convert_dictionary.lua  split_train_valid_docs.py
+average_checkpoints.py  convert_model.lua       spm_decode.py
+build_sym_alignment.py  count_docs.py           spm_encode.py
+check_installation.py   read_binarized.py       spm_train.py
+compare_namespaces.py   rm_pt.py                test_fsdp.sh
+compound_split_bleu.sh  sacrebleu.sh            train.sh
+constraints             shard_docs.py
+(transformers-course) [hotsko@login1 transformers-course]$ ls data
+sequence-copy-testing
+(transformers-course) [hotsko@login1 transformers-course]$ ls fairseq/scripts/train.sh
+fairseq/scripts/train.sh
+(transformers-course) [hotsko@login1 transformers-course]$ sbatch fairseq/scripts/train.sh
+Submitted batch job 52572285
+(transformers-course) [hotsko@login1 transformers-course]$ ls data/sequence-copy-testing/bin-data/
+ls: cannot access 'data/sequence-copy-testing/bin-data/': No such file or directory
+(transformers-course) [hotsko@login1 transformers-course]$ ls data
+sequence-copy-testing
+(transformers-course) [hotsko@login1 transformers-course]$ ls data/sequence-copy-testing/
+train.src  train.tgt  valid.src  valid.tgt
+(transformers-course) [hotsko@login1 transformers-course]$ nano scripts/train.sh
+(transformers-course) [hotsko@login1 transformers-course]$ 
+(transformers-course) [hotsko@login1 transformers-course]$ sbatch fairseq/scripts/train.sh
+Submitted batch job 52572290
+(transformers-course) [hotsko@login1 transformers-course]$ sbatch fairseq/scripts/train.sh
+Submitted batch job 52572292
+(transformers-course) [hotsko@login1 transformers-course]$ nano fairseq/scripts/train.sh 
+(transformers-course) [hotsko@login1 transformers-course]$ mkdir data/sequence-copy-testing/out
+(transformers-course) [hotsko@login1 transformers-course]$ sbatch fairseq/scripts/train.sh
+Submitted batch job 52572556
+(transformers-course) [hotsko@login1 transformers-course]$ squeue -u hotsko
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+(transformers-course) [hotsko@login1 transformers-course]$ squeue
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          50456534       amd hisat2_i   kerda8 PD       0:00      4 (Reservation)
+          50456525       amd hisat2_i   kerda8 PD       0:00      4 (Reservation)
+          50456514       amd hisat2_i   kerda8 PD       0:00      4 (Reservation)
+          52571062       amd 20201028  jflores  R    4:25:14      1 ares1
+          52502389       amd 1_T2D_ad   rukins  R 3-03:08:45      2 artemis[8-9]
+          52502390       amd 2_T2D_ad   rukins  R 3-03:08:45      2 artemis[8-9]
+          52502391       amd 3_T2D_ad   rukins  R 3-03:08:45      2 artemis[8-9]
+          52502392       amd 4_T2D_ad   rukins  R 3-03:08:45      2 artemis[8-9]
+          52502393       amd 5_T2D_ad   rukins  R 3-03:08:45      2 artemis[8-9]
+          52502394       amd 6_T2D_ad   rukins  R 3-03:08:45      2 artemis[8-9]
+          52502395       amd 7_T2D_ad   rukins  R 3-03:08:45      2 artemis[8-9]
+          52502396       amd 8_T2D_ad   rukins  R 3-03:08:45      2 artemis[8-9]
+          52502528       amd 2_T2D_un   rukins  R 3-02:56:45      2 artemis[8-9]
+          52502529       amd 3_T2D_un   rukins  R 3-02:56:45      2 artemis[8-9]
+          52502530       amd 4_T2D_un   rukins  R 3-02:56:45      2 artemis[8-9]
+          52502531       amd 5_T2D_un   rukins  R 3-02:56:45      2 artemis[8-9]
+          52502532       amd 6_T2D_un   rukins  R 3-02:56:45      2 artemis[8-9]
+          52502533       amd 7_T2D_un   rukins  R 3-02:56:45      2 artemis[8-9]
+          52502534       amd 8_T2D_un   rukins  R 3-02:56:45      2 artemis[8-9]
+          52570144       amd e/Methan     burk  R    6:57:21      1 artemis6
+          52559612       amd pleks-IV     burk  R 1-05:43:57      1 ares1
+          52544346       amd hanol/Ko     burk  R 2-06:14:40      1 ares3
+          49656585       gpu   dicoms hpc_aliz PD       0:00      1 (AssocGrpGRESMinutes)
+          52439914       gpu lab78_jo hpc_jhch PD       0:00      1 (AssocGrpGRESMinutes)
+          52439911       gpu lab78_jo hpc_jhch PD       0:00      1 (AssocGrpGRESMinutes)
+          52571979       gpu finetune pashchen PD       0:00      1 (Priority)
+          52572561       gpu test_job lucasger PD       0:00      1 (Priority)
+          52572559       gpu test_job  martinv PD       0:00      1 (Priority)
+          52572560       gpu test_job  habanen PD       0:00      1 (Priority)
+          52571891       gpu jhub-sin juangonz  R      47:01      4 falcon[1-2,4-5]
+          52571885       gpu jhub-sin andresse  R      51:01      1 falcon3
+          52558904       gpu yolo_pre   tambet  R 1-11:04:01      1 falcon4
+          52570118       gpu 17_10_co dmytrofe  R    7:39:22      1 pegasus2
+          52560796       gpu   iaunet  prytula  R 1-03:05:52      1 falcon4
+          52560797       gpu   iaunet  prytula  R 1-03:05:52      1 falcon4
+          52560798       gpu   iaunet  prytula  R 1-03:05:52      1 falcon4
+          52560799       gpu   iaunet  prytula  R 1-03:05:52      1 falcon4
+          52560800       gpu   iaunet  prytula  R 1-03:05:52      1 falcon5
+          52571054       gpu     bash volodymy  R    4:39:15      1 falcon2
+          52571055       gpu     bash volodymy  R    4:39:15      2 falcon[2,6]
+          52560231       gpu     bash volodymy  R 1-04:15:54      3 falcon[4-6]
+          52571035       gpu jhub-sin   paskov  R    5:47:17      4 falcon[1-2,4-5]
+          52571768       gpu     bash aleksanm  R    1:15:03      1 falcon5
+          52566378       gpu     bash deepikau  R   21:35:35      1 pegasus2
+          52567340       gpu log_CER-   yelmen  R   16:27:30      1 falcon5
+          52571600       gpu     bash   yelmen  R    2:09:06      1 pegasus
+          52571093       gpu   f20_17 khajuria  R    3:39:11      1 falcon3
+          52571086       gpu    f40_9 khajuria  R    3:51:12      1 falcon6
+          52571083       gpu    f10_9 khajuria  R    3:53:12      1 falcon6
+          52571084       gpu    f20_9 khajuria  R    3:53:12      1 falcon6
+          52571085       gpu    f30_9 khajuria  R    3:53:12      1 falcon6
+          52571827       gpu   f20_13 khajuria  R      57:02      1 falcon2
+          52571052       gpu jupyter_ alikhano  R    4:43:16      1 falcon6
+          52181541     intel g1772726   toniso CG       0:00      1 galaxy-ut
+      52339242_[1]      long diversif   okeoke PD       0:00      1 (ReqNodeNotAvail, UnavailableNodes:bfr[3-4],sfr[9-12])
+      52332149_[1]      long diversif   okeoke PD       0:00      1 (ReqNodeNotAvail, UnavailableNodes:bfr[3-4],sfr[9-12])
+          52572315      main c8060696 pantiukh CF       2:54      1 ares5
+          52572316      main c8060696 pantiukh CF       2:54      1 ares6
+          52572317      main c8060696 pantiukh CF       2:54      1 ares7
+          52572318      main c8060696 pantiukh CF       2:54      1 ares8
+          52572303      main c8060696 pantiukh CF       2:55      1 artemis16
+          52572304      main c8060696 pantiukh CF       2:55      1 artemis18
+          52572305      main c8060696 pantiukh CF       2:55      1 artemis10
+          52572306      main c8060696 pantiukh CF       2:55      1 artemis11
+          52572307      main c8060696 pantiukh CF       2:55      1 artemis13
+          52572310      main c8060696 pantiukh CF       2:55      1 artemis14
+          52572311      main c8060696 pantiukh CF       2:55      1 artemis1
+          52572312      main c8060696 pantiukh CF       2:55      1 artemis2
+          52572313      main c8060696 pantiukh CF       2:55      1 artemis3
+          52572314      main c8060696 pantiukh CF       2:55      1 ares4
+          49471820      main lab7_hel hpc_mnur PD       0:00      1 (AssocGrpMemMinutes)
+          52570108      main sys/dash hpc_laas PD       0:00      1 (AssocGrpCPUMinutesLimit)
+          50302330      main r2_cX_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302329      main r2_c9_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302327      main r2_c8_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302326      main r2_c7_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302324      main r2_c6_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302323      main r2_c5_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302321      main r2_c4_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302320      main r2_c3_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302319      main r2_c22_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302317      main r2_c21_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302316      main r2_c20_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302314      main r2_c2_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302313      main r2_c19_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302311      main r2_c18_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302310      main r2_c17_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302309      main r2_c16_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302307      main r2_c15_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302305      main r2_c14_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302304      main r2_c13_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302302      main r2_c12_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302301      main r2_c11_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302299      main r2_c10_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302298      main r2_c1_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302296      main r2_cX_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302294      main r2_c9_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302293      main r2_c8_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302291      main r2_c7_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302290      main r2_c6_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302289      main r2_c5_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302288      main r2_c4_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302286      main r2_c3_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302285      main r2_c22_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302283      main r2_c21_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302282      main r2_c20_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302281      main r2_c2_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302280      main r2_c19_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302279      main r2_c18_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302277      main r2_c17_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302276      main r2_c16_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302275      main r2_c15_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302274      main r2_c14_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302272      main r2_c13_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302271      main r2_c12_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302270      main r2_c11_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302268      main r2_c10_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302267      main r2_c1_qs  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302178      main r2_cX_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302176      main r2_c9_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302175      main r2_c8_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302174      main r2_c7_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302173      main r2_c6_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302172      main r2_c5_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302171      main r2_c4_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302170      main r2_c3_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302169      main r2_c22_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302168      main r2_c21_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302167      main r2_c20_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302166      main r2_c2_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302165      main r2_c19_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302163      main r2_c18_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302162      main r2_c17_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302161      main r2_c16_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302159      main r2_c15_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302158      main r2_c14_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302157      main r2_c13_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302156      main r2_c12_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302155      main r2_c11_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302154      main r2_c10_q  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          50302152      main r2_c1_qo  ainikaa PD       0:00      1 (DependencyNeverSatisfied)
+          52572326      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572327      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572328      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572329      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572330      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572331      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572332      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572333      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572334      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572335      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572336      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572337      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572338      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572340      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572341      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572373      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572374      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572375      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572376      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572377      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572378      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572379      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572380      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572381      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572382      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572384      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572385      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572386      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572387      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572348      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572349      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572350      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572351      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572352      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572353      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572354      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572355      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572356      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572357      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572358      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572359      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572361      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572363      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572364      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572365      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572366      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572367      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572368      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572369      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572371      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572342      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572343      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572344      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572345      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572346      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572347      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572395      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572396      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572397      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572398      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572399      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572400      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572401      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572402      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572403      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572388      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572389      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572390      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572391      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572392      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572393      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572394      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572404      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572558      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572557      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572553      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572552      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572551      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572550      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572549      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572548      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572547      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572546      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572545      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572544      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572543      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572542      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572541      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572540      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572539      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572538      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572537      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572536      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572535      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572534      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572533      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572532      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572531      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572530      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572529      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572528      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572527      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572526      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572525      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572524      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572523      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572522      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572521      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572520      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572519      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572518      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572517      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572516      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572515      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572514      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572513      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572512      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572511      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572510      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572509      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572508      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572507      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572506      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572505      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572504      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572503      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572502      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572501      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572500      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572499      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572498      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572497      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572496      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572495      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572494      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572493      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572492      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572491      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572490      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572489      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572488      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572487      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572486      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572485      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572484      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572483      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572482      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572481      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572480      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572479      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572478      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572477      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572476      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572475      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572474      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572473      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572472      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572471      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572470      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572469      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572468      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572467      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572466      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572465      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572464      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572463      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572462      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572461      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572460      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572459      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572458      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572457      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572456      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572455      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572454      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572453      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572452      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572451      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572450      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572449      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572448      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572447      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572446      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572445      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572444      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572443      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572442      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572441      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572440      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572439      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572438      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572437      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572436      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572435      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572434      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572433      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572432      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572431      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572430      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572429      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572428      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572427      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572426      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572425      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572424      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572423      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572422      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572421      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572420      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572419      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572418      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572417      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572416      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572415      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572414      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572413      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572412      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572411      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572410      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572409      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52572408      main c8060696 pantiukh PD       0:00      1 (Priority)
+          52571801      main     bash dmytrofe  R    1:07:02      1 ares1
+          52571680      main 474fb7a8    hudja  R    1:19:04      1 artemis19
+          52571667      main 474fb7a8    hudja  R    1:21:04      1 artemis19
+          52571668      main 474fb7a8    hudja  R    1:21:04      1 artemis19
+          52571679      main 474fb7a8    hudja  R    1:21:04      1 artemis8
+          52571665      main 474fb7a8    hudja  R    1:23:04      1 artemis6
+          52571666      main 474fb7a8    hudja  R    1:23:04      1 ares1
+          52571662      main 474fb7a8    hudja  R    1:25:04      1 artemis8
+          52571664      main 474fb7a8    hudja  R    1:25:04      1 artemis8
+          52571649      main 474fb7a8    hudja  R    1:27:04      1 artemis19
+          52571651      main 474fb7a8    hudja  R    1:27:04      1 ares3
+          52571640      main 474fb7a8    hudja  R    1:29:04      1 ares1
+          52571639      main 474fb7a8    hudja  R    1:31:04      1 ares3
+          52571625      main 474fb7a8    hudja  R    1:33:04      1 artemis19
+          52571624      main 474fb7a8    hudja  R    1:35:04      1 ares14
+          52571622      main 474fb7a8    hudja  R    1:37:04      1 ares1
+          52571621      main 474fb7a8    hudja  R    1:39:05      1 ares3
+          52571612      main 474fb7a8    hudja  R    1:43:05      1 ares1
+          52571610      main 474fb7a8    hudja  R    1:45:05      1 ares1
+          52572023      main  keisrid   a30698  R      28:57      1 ares1
+          52571589      main nf-lbf_v mihkelje  R    2:13:07      1 ares1
+          52571762      main jhub-sin   fauzan  R    1:17:03      1 artemis6
+          52571051      main jhub-sin    taido  R    4:47:17      1 artemis6
+          52571097      main jhub-sin khajuria  R    3:33:11      1 ares1
+          52478716      main jlab-cpu  liisa92  R 7-05:29:04      1 ares1
+          52571974      main     bash dzigursk  R      35:00      1 ares1
+          52571049      main  pycharm keernikh  R    4:55:17      1 artemis6
+          52571653      main jhub-sin keernikh  R    1:53:06      1 ares3
+          52572293      main     bash   rukins  R       4:55      1 ares1
+        52571982_1      main   HVnull  tordoni  R      30:59      1 ares3
+        52571982_2      main   HVnull  tordoni  R      30:59      1 ares3
+        52571982_3      main   HVnull  tordoni  R      30:59      1 ares3
+        52571982_4      main   HVnull  tordoni  R      30:59      1 ares3
+        52571982_5      main   HVnull  tordoni  R      30:59      1 artemis6
+        52571982_6      main   HVnull  tordoni  R      30:59      1 artemis6
+        52571982_7      main   HVnull  tordoni  R      30:59      1 artemis6
+        52571982_8      main   HVnull  tordoni  R      30:59      1 artemis6
+        52571982_9      main   HVnull  tordoni  R      30:59      1 artemis6
+       52571982_10      main   HVnull  tordoni  R      30:59      1 artemis6
+       52571982_11      main   HVnull  tordoni  R      30:59      1 artemis19
+       52571982_12      main   HVnull  tordoni  R      30:59      1 artemis19
+       52571982_13      main   HVnull  tordoni  R      30:59      1 artemis19
+       52571982_14      main   HVnull  tordoni  R      30:59      1 artemis19
+       52571982_15      main   HVnull  tordoni  R      30:59      1 artemis19
+       52571982_16      main   HVnull  tordoni  R      30:59      1 artemis19
+       52571982_17      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_18      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_19      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_20      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_21      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_22      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_23      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_24      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_25      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_26      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_27      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_28      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_29      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_30      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_31      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_32      main   HVnull  tordoni  R      30:59      1 ares14
+       52571982_33      main   HVnull  tordoni  R      30:59      1 artemis17
+       52571982_34      main   HVnull  tordoni  R      30:59      1 artemis17
+       52571982_35      main   HVnull  tordoni  R      30:59      1 artemis17
+       52571982_36      main   HVnull  tordoni  R      30:59      1 artemis17
+       52571982_37      main   HVnull  tordoni  R      30:59      1 artemis17
+       52571982_38      main   HVnull  tordoni  R      30:59      1 artemis17
+       52571982_39      main   HVnull  tordoni  R      30:59      1 artemis17
+          52521334      main S_persia    mogge  R 2-20:47:29      1 artemis17
+          52572309      main c8060696 pantiukh  R       2:55      1 ares1
+          52571249      main 474fb7a8    hudja  R    2:59:09      1 artemis9
+          52571144      main 474fb7a8    hudja  R    3:01:09      1 artemis6
+          52572405      main 474fb7a8    hudja  R       2:54      1 ares14
+          52572244      main 474fb7a8    hudja  R      12:55      1 artemis17
+          52572245      main 474fb7a8    hudja  R      12:55      1 artemis17
+          52572195      main 474fb7a8    hudja  R      14:55      1 ares3
+          52572035      main 474fb7a8    hudja  R      24:56      1 ares1
+          52571913      main 474fb7a8    hudja  R      43:00      1 ares1
+          52571915      main 474fb7a8    hudja  R      43:00      1 ares1
+          52571895      main 474fb7a8    hudja  R      45:00      1 ares3
+          52181554 main,inte g1772730   toniso PD       0:00      1 (ReqNodeNotAvail, UnavailableNodes:ares[4,6,10-11,15,17],artemis[7,9-11,20])
+(transformers-course) [hotsko@login1 transformers-course]$ squeue -u liliana.hotsko
+squeue: error: Invalid user: liliana.hotsko
+
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+(transformers-course) [hotsko@login1 transformers-course]$ squeue -u hotsko
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+(transformers-course) [hotsko@login1 transformers-course]$ sbatch fairseq/scripts/train.sh
+Submitted batch job 52572563
+(transformers-course) [hotsko@login1 transformers-course]$ squeue -u hotsko
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          52572563      main test_job   hotsko PD       0:00      1 (Priority)
+(transformers-course) [hotsko@login1 transformers-course]$ squeue -u hotsko
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+(transformers-course) [hotsko@login1 transformers-course]$ cat '52572563' ls
+cat: 52572563: No such file or directory
+cat: ls: No such file or directory
+(transformers-course) [hotsko@login1 transformers-course]$ cat '52572563'
+cat: 52572563: No such file or directory
+(transformers-course) [hotsko@login1 transformers-course]$ cat '52572563' | less
+cat: 52572563: No such file or directory
+(transformers-course) [hotsko@login1 transformers-course]$ ls data/sequence-copy-testing/out
+(transformers-course) [hotsko@login1 transformers-course]$ Connection to rocket.hpc.ut.ee closed by remote host.
+Connection to rocket.hpc.ut.ee closed.
+client_loop: send disconnect: Broken pipe
+lilianahotsko@Lilianas-MacBook-Air ~ % 
